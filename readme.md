@@ -121,7 +121,7 @@ Alternatively you can use the non-null assertion `!` to require a `@Prop`. This 
 
 ## Two-way binding
 
-To enable two-way binding the child component emits any changes
+To enable two-way binding the child component emits any changes made within the component and the parent maintains the mutable variable. The following example is for a simple string variable and can be looked up in `two-way-binding-simple-page`. For a more complex variable reference `two-way-binding-object-page`.
 
 ```tsx
 // child-component
