@@ -119,4 +119,6 @@ if (someStringProp !== undefined) console.log(someStringProp.slice(0, 1));
 
 Alternatively you can use the non-null assertion `!` to require a `@Prop`. This will also work will negate the need for undefined-check. Similarly this will work for events.
 
-## 2-way binding
+## Two-way binding
+
+To enable two-way binding

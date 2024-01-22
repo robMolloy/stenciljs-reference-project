@@ -19,8 +19,8 @@ export class AppRoot {
               <stencil-route url="/" component="home-page" exact={true} />
               <stencil-route url="/profile/:name" component="profile-page" exact={true} />
               <stencil-route
-                url="/two-way-binding-page"
-                component="two-way-binding-page"
+                url="/two-way-binding-simple-page"
+                component="two-way-binding-simple-page"
                 exact={true}
               />
 

@@ -19,8 +19,15 @@ export namespace Components {
         "match"?: MatchResults;
     }
     interface TwoWayBindingComponent {
+        "showClearButton": boolean;
+        "value": string;
     }
     interface TwoWayBindingPage {
+    }
+    interface TwoWayBindingSimpleComponent {
+        "value": string;
+    }
+    interface TwoWayBindingSimplePage {
     }
 }
 declare global {
@@ -66,6 +73,18 @@ declare global {
         prototype: HTMLTwoWayBindingPageElement;
         new (): HTMLTwoWayBindingPageElement;
     };
+    interface HTMLTwoWayBindingSimpleComponentElement extends Components.TwoWayBindingSimpleComponent, HTMLStencilElement {
+    }
+    var HTMLTwoWayBindingSimpleComponentElement: {
+        prototype: HTMLTwoWayBindingSimpleComponentElement;
+        new (): HTMLTwoWayBindingSimpleComponentElement;
+    };
+    interface HTMLTwoWayBindingSimplePageElement extends Components.TwoWayBindingSimplePage, HTMLStencilElement {
+    }
+    var HTMLTwoWayBindingSimplePageElement: {
+        prototype: HTMLTwoWayBindingSimplePageElement;
+        new (): HTMLTwoWayBindingSimplePageElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "error-page": HTMLErrorPageElement;
@@ -74,6 +93,8 @@ declare global {
         "profile-page": HTMLProfilePageElement;
         "two-way-binding-component": HTMLTwoWayBindingComponentElement;
         "two-way-binding-page": HTMLTwoWayBindingPageElement;
+        "two-way-binding-simple-component": HTMLTwoWayBindingSimpleComponentElement;
+        "two-way-binding-simple-page": HTMLTwoWayBindingSimplePageElement;
     }
 }
 declare namespace LocalJSX {
@@ -89,8 +110,17 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
     }
     interface TwoWayBindingComponent {
+        "onUpdate"?: (event: CustomEvent<string>) => void;
+        "showClearButton"?: boolean;
+        "value": string;
     }
     interface TwoWayBindingPage {
+    }
+    interface TwoWayBindingSimpleComponent {
+        "onUpdate"?: (event: CustomEvent<string>) => void;
+        "value": string;
+    }
+    interface TwoWayBindingSimplePage {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
@@ -100,6 +130,8 @@ declare namespace LocalJSX {
         "profile-page": ProfilePage;
         "two-way-binding-component": TwoWayBindingComponent;
         "two-way-binding-page": TwoWayBindingPage;
+        "two-way-binding-simple-component": TwoWayBindingSimpleComponent;
+        "two-way-binding-simple-page": TwoWayBindingSimplePage;
     }
 }
 export { LocalJSX as JSX };
@@ -113,6 +145,8 @@ declare module "@stencil/core" {
             "profile-page": LocalJSX.ProfilePage & JSXBase.HTMLAttributes<HTMLProfilePageElement>;
             "two-way-binding-component": LocalJSX.TwoWayBindingComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingComponentElement>;
             "two-way-binding-page": LocalJSX.TwoWayBindingPage & JSXBase.HTMLAttributes<HTMLTwoWayBindingPageElement>;
+            "two-way-binding-simple-component": LocalJSX.TwoWayBindingSimpleComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingSimpleComponentElement>;
+            "two-way-binding-simple-page": LocalJSX.TwoWayBindingSimplePage & JSXBase.HTMLAttributes<HTMLTwoWayBindingSimplePageElement>;
         }
     }
 }
