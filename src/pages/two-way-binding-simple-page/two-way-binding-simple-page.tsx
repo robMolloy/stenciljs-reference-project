@@ -6,7 +6,6 @@ import { Component, State, h } from '@stencil/core';
 })
 export class TwoWayBindingPage {
   @State() value = 'hello world';
-  @State() showClearButton = true;
 
   render() {
     return (
@@ -22,9 +21,7 @@ export class TwoWayBindingPage {
         <br />
         <two-way-binding-simple-component
           value={this.value}
-          onUpdate={e => {
-            this.value = e.detail;
-          }}
+          onUpdate={e => (this.value = e.detail)}
         />
       </div>
     );

@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'two-way-binding-simple-component',
@@ -6,16 +6,7 @@ import { Component, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/
 })
 export class TwoWayBindingComponent {
   @Prop() value!: string;
-
-  @State() actualValue = '';
   @Event() update!: EventEmitter<string>;
-
-  @Watch('value') watchValue(newValue: string) {
-    this.actualValue = newValue;
-  }
-  @Watch('actualValue') watchActualValue(newValue: string) {
-    this.update.emit(newValue);
-  }
 
   render() {
     return (
@@ -24,8 +15,9 @@ export class TwoWayBindingComponent {
         <input
           type="text"
           value={this.value}
-          onInput={e => (this.actualValue = (e.target as HTMLInputElement).value)}
+          onInput={e => this.update.emit((e.target as HTMLInputElement).value)}
         />
+        <button onClick={() => this.update.emit('')}>clear</button>
         {this.value}
       </div>
     );

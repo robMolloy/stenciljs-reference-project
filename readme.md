@@ -121,4 +121,59 @@ Alternatively you can use the non-null assertion `!` to require a `@Prop`. This 
 
 ## Two-way binding
 
-To enable two-way binding
+To enable two-way binding the child component emits any changes
+
+```tsx
+// child-component
+@Component({
+  tag: 'child-component',
+  shadow: true,
+})
+export class TwoWayBindingComponent {
+  @Prop() value!: string;
+  @Event() update!: EventEmitter<string>;
+
+  render() {
+    return (
+      <div>
+        <h2>Child:</h2>
+        <input
+          type="text"
+          value={this.value}
+          onInput={e => this.update.emit((e.target as HTMLInputElement).value)}
+        />
+        <button onClick={() => this.update.emit('')}>clear</button>
+        {this.value}
+      </div>
+    );
+  }
+}
+```
+
+```tsx
+// parent-component
+@Component({
+  tag: 'parent-component',
+  shadow: true,
+})
+export class TwoWayBindingPage {
+  @State() value = 'hello world';
+
+  render() {
+    return (
+      <div>
+        <h2>Parent:</h2>
+        <input
+          type="text"
+          value={this.value}
+          onInput={e => (this.value = (e.target as HTMLInputElement).value)}
+        />
+        {this.value}
+        <br />
+        <br />
+        <child-component value={this.value} onUpdate={e => (this.value = e.detail)} />
+      </div>
+    );
+  }
+}
+```
