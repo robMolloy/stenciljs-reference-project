@@ -74,6 +74,16 @@ Within src a recommended file/folder structure would be;
 
 ```
 
+## Prettier config
+
+The max character width is set higher than the industry-norm so you may want to change the printWidth to a more familiar amount within `.prettierrc.json`.
+
+```json
+{
+  "printWidth": 100
+}
+```
+
 ## tsconfig strict:"true"
 
 Make the following changes tsconfig.json;
@@ -81,7 +91,8 @@ Make the following changes tsconfig.json;
 ```json
 {
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "noUncheckedIndexedAccess": true
   }
 }
 ```

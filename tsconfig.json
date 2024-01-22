@@ -5,6 +5,7 @@
     "allowUnreachableCode": false,
     "declaration": false,
     "experimentalDecorators": true,
+    "noUncheckedIndexedAccess": true,
     "lib": [
       "dom",
       "es2015"

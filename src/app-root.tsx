@@ -18,6 +18,12 @@ export class AppRoot {
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="home-page" exact={true} />
               <stencil-route url="/profile/:name" component="profile-page" exact={true} />
+              <stencil-route
+                url="/two-way-binding-page"
+                component="two-way-binding-page"
+                exact={true}
+              />
+
               <stencil-route url="/" component="error-page" />
             </stencil-route-switch>
           </stencil-router>

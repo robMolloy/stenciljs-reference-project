@@ -13,8 +13,14 @@ export namespace Components {
     }
     interface HomePage {
     }
+    interface MyComponent {
+    }
     interface ProfilePage {
         "match"?: MatchResults;
+    }
+    interface TwoWayBindingComponent {
+    }
+    interface TwoWayBindingPage {
     }
 }
 declare global {
@@ -36,17 +42,38 @@ declare global {
         prototype: HTMLHomePageElement;
         new (): HTMLHomePageElement;
     };
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    }
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
+    };
     interface HTMLProfilePageElement extends Components.ProfilePage, HTMLStencilElement {
     }
     var HTMLProfilePageElement: {
         prototype: HTMLProfilePageElement;
         new (): HTMLProfilePageElement;
     };
+    interface HTMLTwoWayBindingComponentElement extends Components.TwoWayBindingComponent, HTMLStencilElement {
+    }
+    var HTMLTwoWayBindingComponentElement: {
+        prototype: HTMLTwoWayBindingComponentElement;
+        new (): HTMLTwoWayBindingComponentElement;
+    };
+    interface HTMLTwoWayBindingPageElement extends Components.TwoWayBindingPage, HTMLStencilElement {
+    }
+    var HTMLTwoWayBindingPageElement: {
+        prototype: HTMLTwoWayBindingPageElement;
+        new (): HTMLTwoWayBindingPageElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "error-page": HTMLErrorPageElement;
         "home-page": HTMLHomePageElement;
+        "my-component": HTMLMyComponentElement;
         "profile-page": HTMLProfilePageElement;
+        "two-way-binding-component": HTMLTwoWayBindingComponentElement;
+        "two-way-binding-page": HTMLTwoWayBindingPageElement;
     }
 }
 declare namespace LocalJSX {
@@ -56,14 +83,23 @@ declare namespace LocalJSX {
     }
     interface HomePage {
     }
+    interface MyComponent {
+    }
     interface ProfilePage {
         "match"?: MatchResults;
+    }
+    interface TwoWayBindingComponent {
+    }
+    interface TwoWayBindingPage {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "error-page": ErrorPage;
         "home-page": HomePage;
+        "my-component": MyComponent;
         "profile-page": ProfilePage;
+        "two-way-binding-component": TwoWayBindingComponent;
+        "two-way-binding-page": TwoWayBindingPage;
     }
 }
 export { LocalJSX as JSX };
@@ -73,7 +109,10 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "error-page": LocalJSX.ErrorPage & JSXBase.HTMLAttributes<HTMLErrorPageElement>;
             "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
+            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "profile-page": LocalJSX.ProfilePage & JSXBase.HTMLAttributes<HTMLProfilePageElement>;
+            "two-way-binding-component": LocalJSX.TwoWayBindingComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingComponentElement>;
+            "two-way-binding-page": LocalJSX.TwoWayBindingPage & JSXBase.HTMLAttributes<HTMLTwoWayBindingPageElement>;
         }
     }
 }
