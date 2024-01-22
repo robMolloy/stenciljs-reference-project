@@ -1,8 +1,7 @@
 import { Component, h } from '@stencil/core';
 
 @Component({
-  tag: 'app-home',
-  styleUrl: 'app-home.css',
+  tag: 'home-page',
   shadow: true,
 })
 export class AppHome {

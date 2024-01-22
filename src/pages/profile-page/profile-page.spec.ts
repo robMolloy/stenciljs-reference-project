@@ -1,4 +1,4 @@
-import { AppProfile } from './app-profile';
+import { AppProfile } from './profile-page';
 import { newSpecPage } from '@stencil/core/testing';
 
 describe('app-profile', () => {
