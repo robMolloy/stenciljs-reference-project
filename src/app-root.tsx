@@ -23,6 +23,11 @@ export class AppRoot {
                 component="two-way-binding-simple-page"
                 exact={true}
               />
+              <stencil-route
+                url="/two-way-binding-object-page"
+                component="two-way-binding-object-page"
+                exact={true}
+              />
 
               <stencil-route url="/" component="error-page" />
             </stencil-route-switch>
