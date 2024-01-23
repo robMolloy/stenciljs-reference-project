@@ -5,7 +5,7 @@ import { TwoWayBindingObjectComponent } from '../../components/two-way-binding-o
   tag: 'two-way-binding-object-page',
   shadow: true,
 })
-export class TwoWayBindingPage {
+export class TwoWayBindingObjectPage {
   @State() value: TwoWayBindingObjectComponent['value'] = { value1: 'hello', value2: 'world' };
 
   render() {
