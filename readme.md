@@ -129,7 +129,7 @@ To enable two-way binding the child component emits any changes made within the 
   tag: 'child-component',
   shadow: true,
 })
-export class TwoWayBindingComponent {
+export class ChildComponent {
   @Prop() value!: string;
   @Event() update!: EventEmitter<string>;
 
@@ -156,7 +156,7 @@ export class TwoWayBindingComponent {
   tag: 'parent-component',
   shadow: true,
 })
-export class TwoWayBindingPage {
+export class ParentComponent {
   @State() value = 'hello world';
 
   render() {
@@ -174,6 +174,52 @@ export class TwoWayBindingPage {
         <child-component value={this.value} onUpdate={e => (this.value = e.detail)} />
       </div>
     );
+  }
+}
+```
+
+## Inferring types from component classes
+
+You can import the component class from another file to act as a type
+
+```tsx
+import { Component, State, h } from '@stencil/core';
+import { ChildComponent } from '../../components/ChildComponent/ChildComponent';
+
+@Component({
+  tag: 'parent-component',
+  shadow: true,
+})
+export class ParentComponent {
+  @State() value: ChildComponent['update'] = { value1: 'hello', value2: 'world' };
+
+  render() {
+    return <div>{this.value}</div>;
+  }
+}
+```
+
+If you need to get the argument type from an EventEmitter use the following;
+
+```tsx
+type InferArgFromEventEmitter<T extends EventEmitter<any> | undefined> = T extends EventEmitter<
+  infer U
+>
+  ? U
+  : never;
+
+@Component({
+  tag: 'parent-component',
+  shadow: true,
+})
+export class ParentComponent {
+  @State() value: InferArgFromEventEmitter<ChildComponent['update']> = {
+    value1: 'hello',
+    value2: 'world',
+  };
+
+  render() {
+    return <div>{this.value}</div>;
   }
 }
 ```

@@ -1,11 +1,12 @@
 import { Component, State, h } from '@stencil/core';
+import { TwoWayBindingObjectComponent } from '../../components/two-way-binding-object-component/two-way-binding-object-component';
 
 @Component({
   tag: 'two-way-binding-object-page',
   shadow: true,
 })
 export class TwoWayBindingPage {
-  @State() value = { value1: 'hello', value2: 'world' };
+  @State() value: TwoWayBindingObjectComponent['value'] = { value1: 'hello', value2: 'world' };
 
   render() {
     return (

@@ -4,7 +4,7 @@ import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
   tag: 'two-way-binding-object-component',
   shadow: true,
 })
-export class TwoWayBindingComponent {
+export class TwoWayBindingObjectComponent {
   @Prop() value!: { value1: string; value2: string };
   @Event() update!: EventEmitter<{ value1: string; value2: string }>;
 

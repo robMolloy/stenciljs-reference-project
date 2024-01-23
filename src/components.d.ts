@@ -27,8 +27,6 @@ export namespace Components {
     }
     interface TwoWayBindingObjectPage {
     }
-    interface TwoWayBindingPage {
-    }
     interface TwoWayBindingSimpleComponent {
         "value": string;
     }
@@ -84,12 +82,6 @@ declare global {
         prototype: HTMLTwoWayBindingObjectPageElement;
         new (): HTMLTwoWayBindingObjectPageElement;
     };
-    interface HTMLTwoWayBindingPageElement extends Components.TwoWayBindingPage, HTMLStencilElement {
-    }
-    var HTMLTwoWayBindingPageElement: {
-        prototype: HTMLTwoWayBindingPageElement;
-        new (): HTMLTwoWayBindingPageElement;
-    };
     interface HTMLTwoWayBindingSimpleComponentElement extends Components.TwoWayBindingSimpleComponent, HTMLStencilElement {
     }
     var HTMLTwoWayBindingSimpleComponentElement: {
@@ -111,7 +103,6 @@ declare global {
         "two-way-binding-component": HTMLTwoWayBindingComponentElement;
         "two-way-binding-object-component": HTMLTwoWayBindingObjectComponentElement;
         "two-way-binding-object-page": HTMLTwoWayBindingObjectPageElement;
-        "two-way-binding-page": HTMLTwoWayBindingPageElement;
         "two-way-binding-simple-component": HTMLTwoWayBindingSimpleComponentElement;
         "two-way-binding-simple-page": HTMLTwoWayBindingSimplePageElement;
     }
@@ -139,8 +130,6 @@ declare namespace LocalJSX {
     }
     interface TwoWayBindingObjectPage {
     }
-    interface TwoWayBindingPage {
-    }
     interface TwoWayBindingSimpleComponent {
         "onUpdate"?: (event: CustomEvent<string>) => void;
         "value": string;
@@ -156,7 +145,6 @@ declare namespace LocalJSX {
         "two-way-binding-component": TwoWayBindingComponent;
         "two-way-binding-object-component": TwoWayBindingObjectComponent;
         "two-way-binding-object-page": TwoWayBindingObjectPage;
-        "two-way-binding-page": TwoWayBindingPage;
         "two-way-binding-simple-component": TwoWayBindingSimpleComponent;
         "two-way-binding-simple-page": TwoWayBindingSimplePage;
     }
@@ -173,7 +161,6 @@ declare module "@stencil/core" {
             "two-way-binding-component": LocalJSX.TwoWayBindingComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingComponentElement>;
             "two-way-binding-object-component": LocalJSX.TwoWayBindingObjectComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingObjectComponentElement>;
             "two-way-binding-object-page": LocalJSX.TwoWayBindingObjectPage & JSXBase.HTMLAttributes<HTMLTwoWayBindingObjectPageElement>;
-            "two-way-binding-page": LocalJSX.TwoWayBindingPage & JSXBase.HTMLAttributes<HTMLTwoWayBindingPageElement>;
             "two-way-binding-simple-component": LocalJSX.TwoWayBindingSimpleComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingSimpleComponentElement>;
             "two-way-binding-simple-page": LocalJSX.TwoWayBindingSimplePage & JSXBase.HTMLAttributes<HTMLTwoWayBindingSimplePageElement>;
         }
