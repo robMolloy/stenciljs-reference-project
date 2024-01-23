@@ -223,3 +223,16 @@ export class ParentComponent {
   }
 }
 ```
+
+## State management
+
+parent, child1, child 2, separate
+
+can parent listen to child1?
+can parent set value of child1?
+can child1 set to window? 
+can parent listen to window.child1?
+can child2 listen to window.child1?
+can separate listen to window.child1?
+
+
