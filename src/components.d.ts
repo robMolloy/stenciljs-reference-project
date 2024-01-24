@@ -18,16 +18,6 @@ export namespace Components {
     interface ProfilePage {
         "match"?: MatchResults;
     }
-    interface SharedStateChild1 {
-    }
-    interface SharedStateChild2 {
-    }
-    interface SharedStatePage {
-    }
-    interface SharedStateParent {
-    }
-    interface SharedStateSepareate {
-    }
     interface TwoWayBindingComponent {
         "showClearButton": boolean;
         "value": string;
@@ -74,36 +64,6 @@ declare global {
         prototype: HTMLProfilePageElement;
         new (): HTMLProfilePageElement;
     };
-    interface HTMLSharedStateChild1Element extends Components.SharedStateChild1, HTMLStencilElement {
-    }
-    var HTMLSharedStateChild1Element: {
-        prototype: HTMLSharedStateChild1Element;
-        new (): HTMLSharedStateChild1Element;
-    };
-    interface HTMLSharedStateChild2Element extends Components.SharedStateChild2, HTMLStencilElement {
-    }
-    var HTMLSharedStateChild2Element: {
-        prototype: HTMLSharedStateChild2Element;
-        new (): HTMLSharedStateChild2Element;
-    };
-    interface HTMLSharedStatePageElement extends Components.SharedStatePage, HTMLStencilElement {
-    }
-    var HTMLSharedStatePageElement: {
-        prototype: HTMLSharedStatePageElement;
-        new (): HTMLSharedStatePageElement;
-    };
-    interface HTMLSharedStateParentElement extends Components.SharedStateParent, HTMLStencilElement {
-    }
-    var HTMLSharedStateParentElement: {
-        prototype: HTMLSharedStateParentElement;
-        new (): HTMLSharedStateParentElement;
-    };
-    interface HTMLSharedStateSepareateElement extends Components.SharedStateSepareate, HTMLStencilElement {
-    }
-    var HTMLSharedStateSepareateElement: {
-        prototype: HTMLSharedStateSepareateElement;
-        new (): HTMLSharedStateSepareateElement;
-    };
     interface HTMLTwoWayBindingComponentElement extends Components.TwoWayBindingComponent, HTMLStencilElement {
     }
     var HTMLTwoWayBindingComponentElement: {
@@ -140,11 +100,6 @@ declare global {
         "home-page": HTMLHomePageElement;
         "my-component": HTMLMyComponentElement;
         "profile-page": HTMLProfilePageElement;
-        "shared-state-child1": HTMLSharedStateChild1Element;
-        "shared-state-child2": HTMLSharedStateChild2Element;
-        "shared-state-page": HTMLSharedStatePageElement;
-        "shared-state-parent": HTMLSharedStateParentElement;
-        "shared-state-separeate": HTMLSharedStateSepareateElement;
         "two-way-binding-component": HTMLTwoWayBindingComponentElement;
         "two-way-binding-object-component": HTMLTwoWayBindingObjectComponentElement;
         "two-way-binding-object-page": HTMLTwoWayBindingObjectPageElement;
@@ -163,16 +118,6 @@ declare namespace LocalJSX {
     }
     interface ProfilePage {
         "match"?: MatchResults;
-    }
-    interface SharedStateChild1 {
-    }
-    interface SharedStateChild2 {
-    }
-    interface SharedStatePage {
-    }
-    interface SharedStateParent {
-    }
-    interface SharedStateSepareate {
     }
     interface TwoWayBindingComponent {
         "onUpdate"?: (event: CustomEvent<string>) => void;
@@ -197,11 +142,6 @@ declare namespace LocalJSX {
         "home-page": HomePage;
         "my-component": MyComponent;
         "profile-page": ProfilePage;
-        "shared-state-child1": SharedStateChild1;
-        "shared-state-child2": SharedStateChild2;
-        "shared-state-page": SharedStatePage;
-        "shared-state-parent": SharedStateParent;
-        "shared-state-separeate": SharedStateSepareate;
         "two-way-binding-component": TwoWayBindingComponent;
         "two-way-binding-object-component": TwoWayBindingObjectComponent;
         "two-way-binding-object-page": TwoWayBindingObjectPage;
@@ -218,11 +158,6 @@ declare module "@stencil/core" {
             "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "profile-page": LocalJSX.ProfilePage & JSXBase.HTMLAttributes<HTMLProfilePageElement>;
-            "shared-state-child1": LocalJSX.SharedStateChild1 & JSXBase.HTMLAttributes<HTMLSharedStateChild1Element>;
-            "shared-state-child2": LocalJSX.SharedStateChild2 & JSXBase.HTMLAttributes<HTMLSharedStateChild2Element>;
-            "shared-state-page": LocalJSX.SharedStatePage & JSXBase.HTMLAttributes<HTMLSharedStatePageElement>;
-            "shared-state-parent": LocalJSX.SharedStateParent & JSXBase.HTMLAttributes<HTMLSharedStateParentElement>;
-            "shared-state-separeate": LocalJSX.SharedStateSepareate & JSXBase.HTMLAttributes<HTMLSharedStateSepareateElement>;
             "two-way-binding-component": LocalJSX.TwoWayBindingComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingComponentElement>;
             "two-way-binding-object-component": LocalJSX.TwoWayBindingObjectComponent & JSXBase.HTMLAttributes<HTMLTwoWayBindingObjectComponentElement>;
             "two-way-binding-object-page": LocalJSX.TwoWayBindingObjectPage & JSXBase.HTMLAttributes<HTMLTwoWayBindingObjectPageElement>;
