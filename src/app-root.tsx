@@ -28,6 +28,7 @@ export class AppRoot {
                 component="two-way-binding-object-page"
                 exact={true}
               />
+              <stencil-route url="/shared-state-page" component="shared-state-page" exact={true} />
 
               <stencil-route url="/" component="error-page" />
             </stencil-route-switch>
