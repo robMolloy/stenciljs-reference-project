@@ -226,13 +226,100 @@ export class ParentComponent {
 
 ## State management
 
-parent, child1, child 2, separate
+```tsx
+class CountStore {
+  value = 0;
 
-can parent listen to child1?
-can parent set value of child1?
-can child1 set to window? 
-can parent listen to window.child1?
-can child2 listen to window.child1?
-can separate listen to window.child1?
+  setValue(x: number) {
+    this.value = x;
+    this.dispatchUpdate();
+  }
+  incrementValue() {
+    this.setValue(this.value + 1);
+  }
 
+  clearValue() {
+    this.setValue(0);
+  }
 
+  dispatchUpdate() {
+    document.body.dispatchEvent(new Event('customEvent'));
+  }
+
+  listen(cb: () => any) {
+    document.body.addEventListener('customEvent', cb);
+    return cb;
+  }
+  removeListener(cb?: () => any) {
+    if (!!cb) document.body.removeEventListener('customEvent', cb);
+  }
+}
+
+export const countStore = new CountStore();
+```
+
+```tsx
+import { Component, State, h } from '@stencil/core';
+import { countStore } from '../../stores/countStore';
+
+@Component({
+  tag: 'global-state-child',
+  shadow: true,
+})
+export class somePage {
+  @State() value = countStore.value;
+  countStoreListener?: ReturnType<typeof countStore.listen>;
+
+  async componentWillLoad() {
+    this.countStoreListener = countStore.listen(() => {
+      this.value = countStore.value;
+    });
+  }
+  disconnectedCallback() {
+    if (this.countStoreListener) countStore.removeListener(this.countStoreListener);
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Chld component</h2>
+
+        {this.value}
+
+        <button onClick={() => countStore.incrementValue()}>inc</button>
+      </div>
+    );
+  }
+}
+```
+
+## Global styles
+
+Docs are lacking within Stencil but there is a helpful hint within the app.css file when starting a new app.
+
+It would appear that global styles can only be applied to the body element which among the normal css properties can enable the choice of font for the whole app. Within the :root the use of css variables can be set;
+
+```css
+/* app.css */
+:root {
+  --color-primary: blue;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+```
+
+```tsx
+@Component({
+tag: 'consumer-component',
+shadow: true,
+styles: `
+h2 {
+  color: var(--color-primary);
+}
+`,
+})
+```

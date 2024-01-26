@@ -11,6 +11,10 @@ export namespace Components {
     }
     interface ErrorPage {
     }
+    interface GlobalStateChild {
+    }
+    interface GlobalStatePage {
+    }
     interface HomePage {
     }
     interface MyComponent {
@@ -41,6 +45,18 @@ declare global {
     var HTMLErrorPageElement: {
         prototype: HTMLErrorPageElement;
         new (): HTMLErrorPageElement;
+    };
+    interface HTMLGlobalStateChildElement extends Components.GlobalStateChild, HTMLStencilElement {
+    }
+    var HTMLGlobalStateChildElement: {
+        prototype: HTMLGlobalStateChildElement;
+        new (): HTMLGlobalStateChildElement;
+    };
+    interface HTMLGlobalStatePageElement extends Components.GlobalStatePage, HTMLStencilElement {
+    }
+    var HTMLGlobalStatePageElement: {
+        prototype: HTMLGlobalStatePageElement;
+        new (): HTMLGlobalStatePageElement;
     };
     interface HTMLHomePageElement extends Components.HomePage, HTMLStencilElement {
     }
@@ -87,6 +103,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "error-page": HTMLErrorPageElement;
+        "global-state-child": HTMLGlobalStateChildElement;
+        "global-state-page": HTMLGlobalStatePageElement;
         "home-page": HTMLHomePageElement;
         "my-component": HTMLMyComponentElement;
         "profile-page": HTMLProfilePageElement;
@@ -100,6 +118,10 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface ErrorPage {
+    }
+    interface GlobalStateChild {
+    }
+    interface GlobalStatePage {
     }
     interface HomePage {
     }
@@ -123,6 +145,8 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-root": AppRoot;
         "error-page": ErrorPage;
+        "global-state-child": GlobalStateChild;
+        "global-state-page": GlobalStatePage;
         "home-page": HomePage;
         "my-component": MyComponent;
         "profile-page": ProfilePage;
@@ -138,6 +162,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "error-page": LocalJSX.ErrorPage & JSXBase.HTMLAttributes<HTMLErrorPageElement>;
+            "global-state-child": LocalJSX.GlobalStateChild & JSXBase.HTMLAttributes<HTMLGlobalStateChildElement>;
+            "global-state-page": LocalJSX.GlobalStatePage & JSXBase.HTMLAttributes<HTMLGlobalStatePageElement>;
             "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "profile-page": LocalJSX.ProfilePage & JSXBase.HTMLAttributes<HTMLProfilePageElement>;

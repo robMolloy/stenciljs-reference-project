@@ -29,6 +29,10 @@ export class AppHome {
         <stencil-route-link url="/any-other-page">
           <button>error page</button>
         </stencil-route-link>
+        <br />
+        <stencil-route-link url="/global-state-page">
+          <button>global state page</button>
+        </stencil-route-link>
       </div>
     );
   }
