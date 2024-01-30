@@ -367,18 +367,14 @@ const useFetchData = async (p: {
 export class someComponent {
   @State() value?: TFetchDataSuccess['data'] = undefined;
   @State() loading = false;
-  @State() error = false;
-  @State() errorMessage = '';
+  @State() errorMessage?: string;
 
   async componentDidLoad() {
     useFetchData({
       onLoadingStart: () => (this.loading = true),
       onLoadingFinish: () => (this.loading = false),
       onDataSuccess: (data: TFetchDataSuccess['data']) => (this.data = data),
-      onDataFail: (error: TFetchDataFail['error']) => {
-        this.error = true;
-        this.errorMessage = error.message;
-      },
+      onDataFail: (error: TFetchDataFail['error']) => (this.errorMessage = error.message),
     })
   }
 
@@ -386,7 +382,7 @@ export class someComponent {
     return (
       <div>
         {!!this.loading && <div><loading-spinner /></div>}
-        {!!this.error && <div>Error: {this.errorMessage}</div>}
+        {!!this.errorMessage && <div>Error: {this.errorMessage}</div>}
         {!!this.data && <pre>{JSON.stringify(this.data, undefined, 2)}</pre>}
       </div>
     );
