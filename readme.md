@@ -369,7 +369,6 @@ export class someComponent {
   @State() loading = false;
   @State() error = false;
   @State() errorMessage = '';
-  countStoreListener?: ReturnType<typeof countStore.listen>;
 
   async componentDidLoad() {
     useFetchData({
