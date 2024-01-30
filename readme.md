@@ -328,19 +328,25 @@ h2 {
 
 ## hooks
 
+React-style hooks will only be available once mixins are available
 ~~haunted js https://www.npmjs.com/package/haunted~~ (don't think this is possible)
 
 ### alt-hooks
 
 ```ts
+
+/* types */
 type TFetchData = { success: true; data: TData } | { success: false; error: { message: string } };
 type TFetchDataSuccess = Extract<TFetchData, {success:true}>
 type TFetchDataFail = Extract<TFetchData, {success:false}>
+
+/* pure fetch */
 const fetchData: TFetchData = () => {
   ...
 };
 
-const useFetch = async (p: {
+/* fetch "hook" */
+const useFetchData = async (p: {
   onLoadingStart: () => any;
   onLoadingFinish: () => any;
   onDataSuccess: (data: TFetchDataSuccess['data']) => any;
@@ -352,4 +358,39 @@ const useFetch = async (p: {
   else p.onDataFail(response.error.message);
   p.onLoadingFinish();
 };
+
+/* hook consumption */
+@Component({
+  tag: 'some-component',
+  shadow: true,
+})
+export class someComponent {
+  @State() value?: TFetchDataSuccess['data'] = undefined;
+  @State() loading = false;
+  @State() error = false;
+  @State() errorMessage = '';
+  countStoreListener?: ReturnType<typeof countStore.listen>;
+
+  async componentDidLoad() {
+    useFetchData({
+      onLoadingStart: () => (this.loading = true),
+      onLoadingFinish: () => (this.loading = false),
+      onDataSuccess: (data: TFetchDataSuccess['data']) => (this.data = data),
+      onDataFail: (error: TFetchDataFail['error']) => {
+        this.error = true;
+        this.errorMessage = error.message;
+      },
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {!!this.loading && <div><loading-spinner /></div>}
+        {!!this.error && <div>Error: {this.errorMessage}</div>}
+        {!!this.data && <pre>{JSON.stringify(this.data, undefined, 2)}</pre>}
+      </div>
+    );
+  }
+}
 ```
