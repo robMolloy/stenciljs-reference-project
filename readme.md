@@ -226,6 +226,8 @@ export class ParentComponent {
 
 ## State management
 
+There is no default state management solution for stencil or another webcomponent solution. The following solution uses something similar to the the 2-way-binding solution but by leveraging the dispatchEvent property on a global dom element (such as document or document.body) a rudimentary state management solution can be created;
+
 ```tsx
 class CountStore {
   value = 0;
@@ -322,4 +324,32 @@ h2 {
 }
 `,
 })
+```
+
+## hooks
+
+~~haunted js https://www.npmjs.com/package/haunted~~ (don't think this is possible)
+
+### alt-hooks
+
+```ts
+type TFetchData = { success: true; data: TData } | { success: false; error: { message: string } };
+type TFetchDataSuccess = Extract<TFetchData, {success:true}>
+type TFetchDataFail = Extract<TFetchData, {success:false}>
+const fetchData: TFetchData = () => {
+  ...
+};
+
+const useFetch = async (p: {
+  onLoadingStart: () => any;
+  onLoadingFinish: () => any;
+  onDataSuccess: (data: TFetchDataSuccess['data']) => any;
+  onDataFail: (error: TFetchDataFail['error']['message']) => any;
+}) => {
+  p.onLoadingStart();
+  const response = await fetchData();
+  if (response.success) p.onDataSuccess(response.data);
+  else p.onDataFail(response.error.message);
+  p.onLoadingFinish();
+};
 ```
